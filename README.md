@@ -91,12 +91,24 @@ Semantics refers to the meaning of code rather than the rules, i.e. syntax.
 
 Some input values are syntactically valid for functions and operators, but produce unexpected or invalid results. This can be due to incompatible values, errors in logic, or unconventional behaviour. Results may appear correct for some values, possibly many, but not all.
 
-> **Example 1:**  
-> The [mod operator](#modulus-mod--integers-only) `%` should not be used with floating point numbers but will still evaluate them. This is because PangoScript will `round()`* the floating point inputs before the calculation.  
-> `5.4 * 5 = 27` is correct.  
-> `27 / 5.4 = 5` is correct.  
-> `27 % 5.4 = 2` is incorrect as PangoScript initially rounds `5.4` to `5`. The expected result is `0`.  
-> \* PangoScript always rounds `.5` down instead of up.
+> The [mod operator](#modulus-mod--integers-only) `%` should not be used with floating point numbers, but it will still evaluate them. This is because PangoScript will `round()`* the floating point inputs before the calculation.  
+> ```
+>  5 * 5.4 = 27
+> 27 / 5.4 = 5
+> 27 % 5.4 = 2
+> 27 % 5   = 2
+> ```
+
+**Note:** PangoScript rounds `X.5` down if `X` is even, but up if `X` is odd.
+
+```
+round(0.5) = 0
+round(1.5) = 2
+round(2.5) = 2
+round(3.5) = 4
+round(4.5) = 4
+round(5.5) = 6
+```
 
 ## Predefined constants
 
@@ -111,7 +123,7 @@ ANY    = -1 // (Used in WaitFor commands)
 TOGGLE =  2 // (used in commands like MasterPause)
 ASIS   = -2
 ```
-> <yellow>**Warning:**</yellow> If these words are declared as a [variable name](#variables), the variable will, from that point, override the constant within the variable's scope.
+<yellow>**Warning:**</yellow> If these words are declared as a [variable name](#variables), the variable will, from that point, override the constant within the variable's scope.
 
 ## Operators
 
