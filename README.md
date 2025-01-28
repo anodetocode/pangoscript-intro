@@ -71,10 +71,15 @@ PangoScript is a programming language used to provide custom behaviour in Beyond
 
 * Indentation has no effect on execution.
 
-### Comments
+### Code Comments
 
-* On a line, everything after `//` is considered a comment.
-* Use comments to explain things that are unclear or why it's done.
+All text on a line after the first occurrence of `//` is considered a comment and will be ignored during execution.
+
+Use comments to annotate your code to make it easier to understand and maintain. As the code itself already answers the "how" something is done, your comments are almost always answering the "why". Meaning, don't duplicate the code with the comments you write. This is to avoid one of the main pitfalls with comments. They can diverge from the code over time and misguide you. Especially with lots of comments, they're difficult to maintain and easily missed.
+
+Just like you'd toggle on/off a cue effect. You can comment out entire lines of code to help with development and debugging. Just be sure to clean up afterwards so that they doesn't clutter up your file.
+
+For multiline comments, you must place `//` on each line. PangoScript doesn't have an additional multiline comment syntax.
 
 ### Naming
 
@@ -431,7 +436,7 @@ You cannot express integers as binary in PangoScript. Where a binary is used, li
 * After declaring, immediately assign an initial default value. `0` is the typical unless there is a more sensible default.
 
 > <blue>**Note:**</blue> When testing in the BEYOND 5 Editor, a default value of `0` is set automatically after declaring. If declared again, the current value is lost and is set to `0`.
-> * The Help explicitly says the script will error if the variable isn't manually initialized after declaration, so this implicit initialization to `0` may be new.
+> * The Help explicitly says the script will error if the variable isn't manually initialised after declaration, so this implicit initialisation to `0` may be new.
 > * Regardless, it is usually a good practice to initialize variables with default values so that it's explicit what they are.
 
 #### Local variables `var`
@@ -484,7 +489,7 @@ Size 50, 50, 50
 Conditionally execute a single statement.
 
 * Has the form `if ( <expression> ) <statement>`
-* `<expression>` must resolve to a number, and often utilizes the [comparison operators](#comparison-operators).
+* `<expression>` must resolve to a number, and often utilises the [comparison operators](#comparison-operators).
 * `<statement>` will be executed if `expression` is True (True is defined as any number except `0`).
 * Can only execute a single statement, i.e. multiple statements cannot be chained on the same line with semicolons.
 
@@ -502,7 +507,7 @@ Conditionally execute a single statement.
 >     statement1
 >     statement2
 >     statement3
-> AferIf:
+> AfterIf:
 > ```
 
 #### Jump statements
